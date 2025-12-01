@@ -1,0 +1,71 @@
+<div class="player-section">
+  <button (click)="goBack()" class="back-btn">⬅ Torna alla lista</button>
+
+  @if (videoUrl) {
+    <div class="video-container">
+      <iframe
+        [src]="videoUrl"
+        width="100%"
+        height="100%"
+        frameborder="0"
+        allowfullscreen
+        allow="autoplay; encrypted-media">
+      </iframe>
+    </div>
+  }
+</div>
+
+<div class="info-container">
+
+  @if (isLoading) {
+    <div class="loading-container">
+      <div class="spinner"></div>
+      <p>Sto recuperando la trama e i dettagli...</p>
+    </div>
+  }
+
+  @if (!isLoading && movie) {
+    <div class="movie-details">
+      <header>
+        <h1>
+          {{ movie.title }}
+          <span class="year">({{ movie.release_date | date:'yyyy' }})</span>
+        </h1>
+
+        @if (movie.tagline) {
+          <p class="tagline">"{{ movie.tagline }}"</p>
+        }
+      </header>
+
+      <div class="content-row">
+        <img [src]="imageUrl" class="poster" [alt]="movie.title">
+
+        <div class="text">
+          <div class="badges">
+            <span class="rating">⭐ {{ movie.vote_average | number:'1.1-1' }}</span>
+
+            @if (movie.runtime) {
+              <span class="badge">⏱ {{ movie.runtime }} min</span>
+            }
+
+            @if (movie.genres) {
+              @for (g of movie.genres; track g.id) {
+                <span class="badge genre">{{ g.name }}</span>
+              }
+            }
+          </div>
+
+          <h3>Trama</h3>
+          <p>{{ movie.overview || 'Nessuna trama disponibile.' }}</p>
+        </div>
+      </div>
+    </div>
+  }
+
+  @if (errorMessage) {
+    <div class="error-msg">
+      <p>⚠ Non siamo riusciti a scaricare la trama ({{ errorMessage }}), ma puoi comunque guardare il film qui sopra!</p>
+    </div>
+  }
+
+</div>

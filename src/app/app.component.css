@@ -1,0 +1,6 @@
+.main-content {
+  max-width: 1200px; /* Larghezza massima del sito */
+  margin: 0 auto;    /* Centra il tutto orizzontalmente */
+  padding: 20px;     /* Un po' di aria ai lati */
+  min-height: 100vh; /* Assicura che copra l'altezza dello schermo */
+}

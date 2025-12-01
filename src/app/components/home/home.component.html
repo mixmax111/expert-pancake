@@ -1,0 +1,80 @@
+<div class="header-filters">
+
+  <div class="filters-group">
+    <div class="select-wrapper">
+      <select [(ngModel)]="selectedYear" (change)="onFilterChange()">
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+      </select>
+    </div>
+
+    <div class="select-wrapper">
+      <select [(ngModel)]="selectedGenreId" (change)="onFilterChange()">
+        <option value="">Tutti i Generi</option>
+        <option *ngFor="let genre of genres" [value]="genre.id">
+          {{ genre.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="pagination-inline" *ngIf="movies.length > 0">
+    <button class="mini-btn" (click)="changePage(-1)" [disabled]="currentPage === 1">❮</button>
+
+    <button
+      *ngFor="let p of visiblePages"
+      class="num-btn"
+      [class.active]="p === currentPage"
+      (click)="goToPage(p)">
+      {{ p }}
+    </button>
+
+    <button class="mini-btn" (click)="changePage(1)">❯</button>
+  </div>
+
+  <div class="search-group">
+    <input
+      type="text"
+      placeholder="Cerca film..."
+      [(ngModel)]="searchTerm"
+      (keyup.enter)="applyFilters()"
+    >
+    <button class="search-btn" (click)="applyFilters()">
+      <span>🔍</span>
+    </button>
+  </div>
+
+</div>
+
+<div class="loading-container" *ngIf="isLoading">
+  <div class="spinner"></div>
+  <p>Caricamento film in corso...</p>
+</div>
+
+<h2 class="section-title">
+  <span *ngIf="searchTerm">Risultati ricerca: "{{ searchTerm }}"</span>
+  <span *ngIf="!searchTerm">Film del {{ selectedYear }}</span>
+</h2>
+
+<div class="movies-grid" *ngIf="!isLoading">
+  <app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
+</div>
+
+<div *ngIf="!isLoading && movies.length === 0" class="no-results">
+  Nessun film trovato.
+</div>
+
+<div class="pagination-bottom" *ngIf="movies.length > 0 && !isLoading">
+  <button class="page-btn" (click)="changePage(-1)" [disabled]="currentPage === 1">Indietro</button>
+
+  <div class="numbers-list">
+    <button
+      *ngFor="let p of visiblePages"
+      class="num-btn big"
+      [class.active]="p === currentPage"
+      (click)="goToPage(p)">
+      {{ p }}
+    </button>
+  </div>
+
+  <button class="page-btn" (click)="changePage(1)">Avanti</button>
+</div>

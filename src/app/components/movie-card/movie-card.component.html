@@ -1,0 +1,14 @@
+<div class="card" [routerLink]="['/movie', movie.id]">
+
+  <h3 class="movie-title">{{ movie.title }}</h3>
+
+  <div class="image-container">
+    <img [src]="imageUrl" [alt]="movie.title">
+  </div>
+
+  <div class="card-footer">
+    <p class="desc">{{ shortOverview }}</p>
+    <span class="rating">⭐ {{ movie.vote_average | number:'1.1-1' }}</span>
+  </div>
+
+</div>

@@ -1,0 +1,63 @@
+/* Contenitore principale della Navbar */
+.navbar {
+  background-color: #000000;
+  height: 100px; /* Altezza aumentata per ospitare il logo grande */
+  display: flex;
+  align-items: center; /* Centra il logo verticalmente */
+  justify-content: center; /* Centra il logo orizzontalmente */
+  padding: 0 30px; /* Spazio laterale */
+
+  border-bottom: 3px solid #e50914; /* Linea rossa caratteristica */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8); /* Ombra profonda per staccarla dal contenuto */
+
+  /* Mantiene la navbar fissa in alto quando scorri la pagina */
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Assicura che stia sempre sopra agli altri elementi */
+}
+
+/* Il contenitore del bottone logo */
+.logo-btn {
+  display: inline-block; /* Necessario per le trasformazioni */
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+
+  /* Animazione fluida quando il mouse entra ed esce */
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* L'immagine del logo */
+.logo-img {
+  height: 80px;
+  width: auto;  /* Mantiene le proporzioni originali */
+  display: block; /* Rimuove spazi indesiderati sotto le immagini inline */
+}
+
+/* --- EFFETTI INTERATTIVI --- */
+
+/* Hover: Quando passi il mouse sopra */
+.logo-btn:hover {
+  transform: scale(1.1); /* Si ingrandisce del 10% */
+  /* Aggiunge un alone rosso luminoso dietro al logo */
+  filter: drop-shadow(0 0 8px rgba(229, 9, 20, 0.6));
+}
+
+/* Active: Quando clicchi (effetto pressione) */
+.logo-btn:active {
+  transform: scale(0.95); /* Si rimpicciolisce leggermente */
+  filter: none;
+}
+
+/* --- RESPONSIVITÀ (Smartphone) --- */
+@media (max-width: 600px) {
+  .navbar {
+    height: 70px; /* Riduciamo l'altezza su schermi piccoli */
+    padding: 0 15px;
+  }
+
+  .logo-img {
+    height: 50px; /* Logo più proporzionato per il telefono */
+  }
+}
