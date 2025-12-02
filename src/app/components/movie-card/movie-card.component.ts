@@ -18,7 +18,7 @@ export class MovieCardComponent {
   get imageUrl(): string {
     return this.movie.poster_path
       ? `${environment.tmdbImageBaseUrl}${this.movie.poster_path}`
-      : 'assets/no-image.png'; // Fallback se non c'è immagine (puoi mettere un placeholder)
+      : 'assets/iconcina32.png'; // Fallback se non c'è immagine
   }
 
   // Tronca la descrizione a circa 20 caratteri

@@ -24,7 +24,7 @@ export class MovieDetailComponent implements OnInit {
     private tmdbService: TmdbService,
     private sanitizer: DomSanitizer,
     private location: Location,
-    private cd: ChangeDetectorRef // <--- 2. INIETTA QUI
+    private cd: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -61,6 +61,7 @@ export class MovieDetailComponent implements OnInit {
     const rawUrl = `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1`;
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(rawUrl);
   }
+// If buying isn't owning, pirating isn't stealing.
 
   goBack() {
     this.location.back();

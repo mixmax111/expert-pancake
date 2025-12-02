@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  // --- LOGICA PAGINAZIONE DINAMICA ---
+  // --- PAGINAZIONE DINAMICA ---
   // Calcola i 5 numeri da mostrare (es: se sei a pag 4 mostra 2,3,4,5,6)
   get visiblePages(): number[] {
     const totalToShow = 5;

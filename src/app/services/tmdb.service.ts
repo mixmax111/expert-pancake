@@ -15,7 +15,7 @@ export class TmdbService {
 
   constructor(private http: HttpClient) {}
 
-  // NUOVO METODO UNICO: Gestisce sia Anno che Genere
+  // Gestisce Anno e Genere
   getDiscoverMovies(year: number, genreId?: number, page: number = 1): Observable<TmdbResponse> {
     let params = new HttpParams()
       .set('primary_release_year', year.toString())
@@ -23,7 +23,7 @@ export class TmdbService {
       .set('page', page.toString())
       .set('language', 'it-IT');
 
-    // Se c'è un genere selezionato, lo aggiungiamo ai parametri
+    // Se c'è un genere selezionato, lo aggiungiamo
     if (genreId) {
       params = params.set('with_genres', genreId.toString());
     }
