@@ -1,59 +1,76 @@
-# ITSCinemaX
+🎬 ITSCinemaX 
+![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![TMDB](https://img.shields.io/badge/TMDB-API-01b4e4?style=for-the-badge&logo=themoviedatabase&logoColor=white)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.0.
+**ITSCinemaX** è un'applicazione web Single Page Application (SPA) sviluppata in **Angular 19** che permette agli utenti di fare cose belle. Il progetto utilizza l'API di **TheMovieDB** per i dati e un player esterno per la riproduzione dell cose.
 
-## Development server
+---
 
-To start a local development server, run:
+## ✨ Funzionalità Principali
 
-```bash
-ng serve
-```
+* **🏠 Home Page Dinamica:** Visualizzazione dei film più popolari, con caricamento automatico all'avvio.
+* **🔍 Ricerca Avanzata:** Barra di ricerca per trovare film per titolo.
+* **📂 Filtri Combinati:** Possibilità di filtrare contemporaneamente per **Anno** (dal 2025 al 1995) e per **Genere**.
+* **📄 Paginazione Custom:** Sistema di paginazione numerata dinamica (1, 2, 3...) sia in testa che in coda alla pagina.
+* **🎥 Streaming Player:** Integrazione di un player video tramite `iframe` sanificato per la visione diretta delle cose.
+* **📱 Design Responsivo:** Interfaccia **Dark Mode** "Netflix-style" realizzata interamente in **CSS Nativo** (senza framework esterni come Bootstrap), ottimizzata per Desktop e Mobile.
+* **⏳ UX Ottimizzata:** Feedback visivi di caricamento (Spinner) per gestire i tempi di risposta delle API.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🛠️ Stack Tecnologico
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Il progetto è stato realizzato seguendo le best practices più recenti di Angular:
 
-```bash
-ng generate component component-name
-```
+* **Framework:** Angular 19 (Ultima versione).
+* **Architettura:** Standalone Components (No NgModules).
+* **Control Flow:** Utilizzo della nuova sintassi `@if`, `@for` per template più performanti e leggibili.
+* **Data Fetching:** `HttpClient` per le chiamate REST verso TMDB.
+* **State Management:** Gestione manuale reattiva tramite Service Pattern.
+* **Security:** Utilizzo di `DomSanitizer` per l'integrazione sicura di iframe esterni.
+* **Change Detection:** Utilizzo di `ChangeDetectorRef` per gestire l'aggiornamento della UI in contesti asincroni complessi.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## 🚀 Installazione e Avvio
 
-## Building
+Per provare il progetto in locale:
 
-To build the project run:
+1.  **Clona la repository:**
+    ```bash
+    git clone [https://github.com/ILTUONOME/ITSCinemaX.git](https://github.com/ILTUONOME/ITSCinemaX.git)
+    cd ITSCinemaX
+    ```
 
-```bash
-ng build
-```
+2.  **Installa le dipendenze:**
+    ```bash
+    npm install
+    ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+3.  **Avvia il server di sviluppo:**
+    ```bash
+    ng serve
+    ```
 
-## Running unit tests
+4.  Apri il browser all'indirizzo `http://localhost:4200`.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+---
 
-```bash
-ng test
-```
+## 📂 Struttura del Progetto
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```text
+src/
+├── app/
+│   ├── components/
+│   │   ├── home/           # Logica principale, filtri e griglia
+│   │   ├── movie-card/     # Componente riutilizzabile per il singolo film
+│   │   ├── movie-detail/   # Pagina dettaglio con Player e Info
+│   │   └── navbar/         # Barra di navigazione con Logo
+│   ├── interfaces/         # Definizioni TypeScript (Movie, Genre)
+│   ├── services/           # Servizio centralizzato per le chiamate API
+│   ├── app.routes.ts       # Configurazione del Routing
+│   └── app.config.ts       # Configurazione globale (HttpClient provider)
+├── assets/                 # Immagini statiche (Logo, Placeholder)
+└── environments/           # Chiavi API (TMDB Token)
