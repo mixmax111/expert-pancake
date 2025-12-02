@@ -8,7 +8,9 @@
     </div>
 
     <div class="select-wrapper">
+
       <select [(ngModel)]="selectedGenreId" (change)="onFilterChange()">
+
         <option value="">Tutti i Generi</option>
         <option *ngFor="let genre of genres" [value]="genre.id">
           {{ genre.name }}
